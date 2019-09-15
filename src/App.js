@@ -17,14 +17,6 @@ import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     currentUser: null
-  //   };
-  // }
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
