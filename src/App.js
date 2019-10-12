@@ -13,27 +13,24 @@ import CheckoutPage from "./pages/checkout/checkout";
 import Header from "./components/header/header";
 import SignInAndSignUp from "./pages/signin-signup/signin-signup";
 
-import { auth, createUserProfileDocument } from "./firebase/firebase.util";
+// import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 
 class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
-
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-
-        userRef.onSnapshot(snapShot => {
-          setCurrentUser({ id: snapShot.id, ...snapShot.data() });
-        });
-
-        // console.log(this.state);
-      }
-      setCurrentUser(userAuth);
-    });
+    // const { setCurrentUser } = this.props;
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocument(userAuth);
+    //     userRef.onSnapshot(snapShot => {
+    //       setCurrentUser({ id: snapShot.id, ...snapShot.data() });
+    //     });
+    //     // console.log(this.state);
+    //   }
+    //   setCurrentUser(userAuth);
+    // });
   }
 
   componentWillUnmount() {
