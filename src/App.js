@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 //actions
-import { setCurrentUser } from "./redux/user/user.actions";
+// import { setCurrentUser } from "./redux/user/user.actions";
 
 import "./App.css";
 
@@ -15,12 +15,14 @@ import SignInAndSignUp from "./pages/signin-signup/signin-signup";
 
 // import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import { checkUserSession } from "./redux/user/user.actions";
 
 class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    // const { setCurrentUser } = this.props;
+    const { checkUserSession } = this.props;
+    checkUserSession();
     // this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
     //   if (userAuth) {
     //     const userRef = await createUserProfileDocument(userAuth);
@@ -67,12 +69,13 @@ const mapDispatchToProps = dispatch => ({
   //dispatch trigger actions
   // first setCurrentUser is the name to be set in the props
   // second setCUrrentUser is the action to be dispatched
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+  // setCurrentUser: user => dispatch(setCurrentUser(user))
   //dispatch(setCurrentUser(user)) is the same as
   // dispatch({
   //   type:"SET_CURRENT_USER",
   //   payload:user
   // })
+  checkUserSession: () => dispatch(checkUserSession())
 });
 
 //connect(mapStateToProps, mapDispatchToPropr,mergeProps,options)
