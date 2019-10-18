@@ -1,3 +1,6 @@
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -8,8 +11,14 @@ body {
   min-height: 100vh;
   width: 100vw;
   overflow-x: hidden;
+
+  @media screen and(max-width:800px){
+    padding:10px
+  }
 }
 
 a {
   text-decoration: none;
 }
+
+`;
